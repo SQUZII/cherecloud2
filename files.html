@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Загруженные файлы</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Загруженные файлы</h1>
+    <ul>
+        {% for file in files %}
+        <li>
+            {{ file }}
+            <a href="{{ url_for('download_file', filename=file) }}">Скачать</a>
+            <a href="{{ url_for('delete_file', filename=file) }}">Удалить</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}">Загрузить другие файлы</a>
+</body>
+</html>
